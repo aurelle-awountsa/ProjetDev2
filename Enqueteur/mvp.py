@@ -47,6 +47,7 @@ class Enquetes:
          """
         return f' Matricule: {self.matricule}, debut: {self._debut}, fin: {self.fin}, enqueteur: {self.enqueteur}, status: {self.status}'
 
+def main():
     while (True):
         welcomeMsg = '''\n ====== Gestionnaire d'enquête ======
        
@@ -111,3 +112,6 @@ class Enquetes:
         elif a == 5:
             print("A tres bientot !")
             exit()
+
+if __name__ == "__main__": 
+    main()
