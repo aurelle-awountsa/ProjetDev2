@@ -4,7 +4,6 @@ from tabulate import tabulate
 
 
 
-
 class Enquetes:
 
     def __init__(self, matricule, debut, fin, enqueteur, status):
@@ -40,7 +39,7 @@ class Enquetes:
             return self._status
 
     def __str__(self):
-        """cette fonction retourne le représentation d'une enquête
+        """cette fonction retourne la représentation d'une enquête
 
              PRE : recoit un objet enquête
              POST : retourne la représentation d'une enquête
@@ -108,6 +107,6 @@ class Enquetes:
             conn.commit()
             conn.close()
 
-        elif a == 5:
+        elif a == 4:
             print("A tres bientot !")
             exit()
