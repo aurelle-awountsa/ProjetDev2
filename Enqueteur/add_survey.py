@@ -12,7 +12,15 @@ py = sys.executable
 
 # Création de la fenêtre principale en tant que classe héritant de Tk
 
-class Add_Survey(Tk):
+class Enquete(Tk):
+
+    """Cette classe est destinée à la manipulation d'enquête
+
+    Author : Aurelle Awountsa
+    Date : Decembre 2023
+    Cette classe permet de gérer les opérations liées à une enquête
+
+    """
     def __init__(self):
         super().__init__()  # appelle l'initialisateur de la classe Tk
         self.title('Ajouter une enquête')  # Définit le titre de la fenêtre
@@ -29,7 +37,13 @@ class Add_Survey(Tk):
         status = StringVar()
         description = StringVar()
 
-        def submit():
+        def add_survey():
+            """Ajoute une enquête à la base de données
+
+        PRE : recueillir les informations relatives à une enquête via le formulaire
+        POST : crée une nouvelle enquête et l'ajoute dans la base de données
+        Raise: Exeption si len(matricule, enqueteur,debut, statut) = 0
+        """
             matricule_value = matricule.get()
             enqueteur_value = enqueteur.get()
             debut_value = debut.get()
@@ -74,9 +88,30 @@ class Add_Survey(Tk):
         Entry(self, textvariable=status, width=30).place(x=230, y=332)
         Label(self, text='Description:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=380)
         Entry(self, textvariable=description, width=30).place(x=230, y=382)
-        Button(self, text="Submit", command=submit).place(x=270, y=480)
+        Button(self, text="Submit", command=add_survey).place(x=270, y=480)
+    def del_survey(self):
+        """Suprimer une enquête à la base de données
+
+        PRE : le matricule d'une enquête via le formulaire
+        POST : supprime une enquête la base de données
+        """
+        pass
+    def update_survey(self):
+        """Mettre à jour une enquête
+            la mise à jour d'une enquête consiste à modifier certains attributs comme dans ce cas le status, l'enqueteur en charge et la description de l'enquête
+        PRE : le matricule d'une enquête via le formulaire
+        POST : attributs d'une enquête modifiées la base de données
+        """
+        pass
+    def search_survey(self):
+        """chercher une enquête
+            Une enquête est unique par son matricule
+        PRE : le matricule d'une enquête via le formulaire
+        POST : retourner les informations liées à une enquête
+        """
+        pass
 
 
 # Création d'une instance de la classe Add_Survey et exécution de la boucle principale Tkinter
 if __name__ == "__main__":
-    Add_Survey().mainloop()
+    Enquete().mainloop()

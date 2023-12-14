@@ -1,6 +1,5 @@
 import sqlite3
 from tkinter import *
-from tkinter import ttk
 from tkinter import messagebox
 import os
 import sys
@@ -8,7 +7,7 @@ import sys
 # Obtient le chemin vers l'interpréteur Python en cour d'exécution
 py = sys.executable
 #Interface graphique
-screen = Tk()
+sign = Tk()
 
 #variables
 matricule = StringVar()
@@ -17,10 +16,10 @@ email = StringVar()
 password = StringVar()
 gender = StringVar()
 # résolution de la fenêtre
-screen.geometry("700x600")
-screen.maxsize(width="700", height="600")
-screen.minsize(width="700", height="600")
-screen.title("Inscription")
+sign.geometry("700x600")
+sign.maxsize(width="700", height="600")
+sign.minsize(width="700", height="600")
+sign.title("Inscription")
 
 def validation():
     if matricule.get() != "" and name.get() != "" and email.get() != "" and password.get() != "" and gender.get() != "":
@@ -40,7 +39,7 @@ def validation():
         messagebox.showerror("Error", "Tous les champs doivent être remplis")
 
 def loginForm():
-    screen.destroy()
+    sign.destroy()
     # import login
 
 
@@ -62,11 +61,11 @@ def insertion():
             ask = messagebox.askyesno("Confirm", "Voulez-vous ajouter un autre enquêteur?")
             if ask:
                 conn.close()
-                screen.destroy()
+                sign.destroy()
                 os.system('%s %s' % (py, 'signup.py'))
             else:
                 conn.close()
-                screen.destroy()
+                sign.destroy()
         except Exception as e:
             messagebox.showerror("Error", f"Erreur lors de l'insertion dans la base de données: {e}")
     else:
@@ -110,24 +109,24 @@ def password_validataion():
         return False
 
  # creation des labels
-Label(screen, text='').pack()
-Label(screen, text='Inscription', fg='dark blue', font=('Arial', 25, 'bold')).pack()
-Label(screen, text='').pack()
-Label(screen, text='Matricule:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=130)
-Entry(screen, textvariable=matricule, width=30).place(x=230, y=132)
-Label(screen, text='Nom:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=180)
-Entry(screen, textvariable=name, width=30).place(x=230, y=182)
-Label(screen, text='Email:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=230)
-Entry(screen, textvariable=email, width=30).place(x=230, y=232)
-Label(screen, text='Password:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=280)
-Entry(screen, textvariable=password, width=30).place(x=230, y=282)
+Label(sign, text='').pack()
+Label(sign, text='Inscription', fg='dark blue', font=('Arial', 25, 'bold')).pack()
+Label(sign, text='').pack()
+Label(sign, text='Matricule:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=130)
+Entry(sign, textvariable=matricule, width=30).place(x=230, y=132)
+Label(sign, text='Nom:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=180)
+Entry(sign, textvariable=name, width=30).place(x=230, y=182)
+Label(sign, text='Email:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=230)
+Entry(sign, textvariable=email, width=30).place(x=230, y=232)
+Label(sign, text='Password:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=280)
+Entry(sign, textvariable=password, width=30).place(x=230, y=282)
 
 gender.set("Radio")
-Label(screen, text="Genre", font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=330)
+Label(sign, text="Genre", font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=330)
 
-Radiobutton(screen, text="Homme", value="Male", width="5", variable=gender).place(x=190, y=330)
-Radiobutton(screen, text="Femme", width="5", value="Female", variable=gender).place(x=260, y=330)
-Radiobutton(screen, text="Autres",width="5", value="Others", variable=gender).place(x=340, y=330)
-Button(screen, text="Inscription", command=validation).place(x=270, y=480)
+Radiobutton(sign, text="Homme", value="Male", width="5", variable=gender).place(x=190, y=330)
+Radiobutton(sign, text="Femme", width="5", value="Female", variable=gender).place(x=260, y=330)
+Radiobutton(sign, text="Autres",width="5", value="Others", variable=gender).place(x=340, y=330)
+Button(sign, text="Inscription", command=validation).place(x=270, y=480)
 
-screen.mainloop()
+sign.mainloop()
