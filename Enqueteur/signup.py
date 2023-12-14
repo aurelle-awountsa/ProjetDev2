@@ -40,7 +40,7 @@ def validation():
 
 def loginForm():
     sign.destroy()
-    # import login
+    import login
 
 
 def insertion():
@@ -128,5 +128,7 @@ Radiobutton(sign, text="Homme", value="Male", width="5", variable=gender).place(
 Radiobutton(sign, text="Femme", width="5", value="Female", variable=gender).place(x=260, y=330)
 Radiobutton(sign, text="Autres",width="5", value="Others", variable=gender).place(x=340, y=330)
 Button(sign, text="Inscription", command=validation).place(x=270, y=480)
+Button(sign, text='Avez-vous déjà un compte?', command=loginForm, font=('Comic Scan Ms', 10, 'italic')).place(x=215, y=510)
+
 
 sign.mainloop()
