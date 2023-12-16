@@ -30,6 +30,7 @@ class Enquete(Tk):
         screen_height = self.winfo_screenheight()
         self.maxsize(screen_width, screen_height)
         self.minsize(500, 500)
+        self.iconbitmap(r'icon.ico')
         matricule = StringVar()
         enqueteur = StringVar()
         debut = StringVar()
@@ -74,7 +75,7 @@ class Enquete(Tk):
 
         # creation des labels
         Label(self, text='').pack()
-        Label(self, text='Enquête', fg='dark blue', font=('Arial', 25, 'bold')).pack()
+        Label(self, text='Ajouter une enquête', fg='dark blue', font=('Arial', 25, 'bold')).pack()
         Label(self, text='').pack()
         Label(self, text='Matricule:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=130)
         Entry(self, textvariable=matricule, width=30).place(x=230, y=132)
@@ -89,27 +90,27 @@ class Enquete(Tk):
         Label(self, text='Description:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=380)
         Entry(self, textvariable=description, width=30).place(x=230, y=382)
         Button(self, text="Submit", command=add_survey).place(x=270, y=480)
-    def del_survey(self):
-        """Suprimer une enquête à la base de données
+        def del_survey():
+            """Suprimer une enquête à la base de données
 
-        PRE : le matricule d'une enquête via le formulaire
-        POST : supprime une enquête la base de données
-        """
-        pass
-    def update_survey(self):
-        """Mettre à jour une enquête
-            la mise à jour d'une enquête consiste à modifier certains attributs comme dans ce cas le status, l'enqueteur en charge et la description de l'enquête
-        PRE : le matricule d'une enquête via le formulaire
-        POST : attributs d'une enquête modifiées la base de données
-        """
-        pass
-    def search_survey(self):
-        """chercher une enquête
-            Une enquête est unique par son matricule
-        PRE : le matricule d'une enquête via le formulaire
-        POST : retourner les informations liées à une enquête
-        """
-        pass
+            PRE : le matricule d'une enquête via le formulaire
+            POST : supprime une enquête la base de données
+            """
+
+        def update_survey():
+            """Mettre à jour une enquête
+                la mise à jour d'une enquête consiste à modifier certains attributs comme dans ce cas le status, l'enqueteur en charge et la description de l'enquête
+            PRE : le matricule d'une enquête via le formulaire
+            POST : attributs d'une enquête modifiées la base de données
+            """
+            pass
+        def search_survey():
+            """chercher une enquête
+                Une enquête est unique par son matricule
+            PRE : le matricule d'une enquête via le formulaire
+            POST : retourner les informations liées à une enquête
+            """
+            pass
 
 
 # Création d'une instance de la classe Add_Survey et exécution de la boucle principale Tkinter

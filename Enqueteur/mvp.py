@@ -1,6 +1,6 @@
 import sqlite3
 from datetime import datetime
-from tabulate import tabulate
+#from tabulate import tabulate
 
 
 
