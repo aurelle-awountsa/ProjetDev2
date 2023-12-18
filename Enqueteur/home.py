@@ -56,6 +56,13 @@ class Home(Tk):
             except Exception as e:
                 print(f"Erreur lors de l'ouverture de la fenêtre 'search_survey.py': {e}")
 
+        def add_suspect():
+            try:
+                subprocess.Popen([py, 'add_suspect.py'], shell=True)
+                print("Fenêtre 'add_suspect.py' ouverte avec succès.")
+            except Exception as e:
+                print(f"Erreur lors de l'ouverture de la fenêtre 'add_suspect.py': {e}")
+
 
         def display():
             """
@@ -92,7 +99,7 @@ class Home(Tk):
         list2.add_command(label="Supprimer enqueteur")
 
         list3 = Menu(self)
-        list3.add_command(label="Ajouter suspect")
+        list3.add_command(label="Ajouter suspect", command=add_suspect)
         list3.add_command(label="Supprimer suspect")
 
         list4 = Menu(self)
