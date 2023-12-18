@@ -42,12 +42,20 @@ class Home(Tk):
             except Exception as e:
                 print(f"Erreur lors de l'ouverture de la fenêtre 'signup.py': {e}")
 
-        def ouvrir_grafique():
+        def add_grafique():
             try:
                 subprocess.Popen([py, 'grafic.py'], shell=True)
                 print("Fenêtre 'grafic.py' ouverte avec succès.")
             except Exception as e:
                 print(f"Erreur lors de l'ouverture de la fenêtre 'grafic.py': {e}")
+        
+        def add_search_survey():
+            try:
+                subprocess.Popen([py, 'search_survey.py'], shell=True)
+                print("Fenêtre 'search_survey.py' ouverte avec succès.")
+            except Exception as e:
+                print(f"Erreur lors de l'ouverture de la fenêtre 'search_survey.py': {e}")
+
 
         def display():
             """
@@ -74,7 +82,7 @@ class Home(Tk):
         list1.add_command(label="Ajouter enquête", command=add_survey)
         list1.add_command(label="Supprimer enquête")
         list1.add_separator()
-        list1.add_command(label="Chercher enquête")
+        list1.add_command(label="Chercher enquête", command=add_search_survey)
         list1.add_command(label="Mettre à jour enquête")
         list1.add_separator()
         list1.add_command(label="Clôturer enquête")
@@ -94,7 +102,7 @@ class Home(Tk):
         list5 = Menu(self)
         list5.add_command(label="Rapport")
         list5.add_command(label="Preuves")
-        list5.add_command(label="Graphique", command=ouvrir_grafique)
+        list5.add_command(label="Graphique", command=add_grafique)
 
         self.menubar.add_cascade(label='Enquête', menu=list1)
         self.menubar.add_cascade(label='Enqueteur', menu=list2)

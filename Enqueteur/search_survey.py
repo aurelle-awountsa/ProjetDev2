@@ -23,7 +23,7 @@ class Enquete(Tk):
 
     def __init__(self):
         super().__init__()  # appelle l'initialisateur de la classe Tk
-        self.title('Ajouter une enquête')  # Définit le titre de la fenêtre
+        self.title('Chercher enquête')  # Définit le titre de la fenêtre
 
         # Obtient la résolution de l'écran principal
         screen_width = self.winfo_screenwidth()
