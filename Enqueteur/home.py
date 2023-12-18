@@ -29,25 +29,29 @@ class Home(Tk):
         self.menubar = Menu(self)
 
         def add_survey():
-
             try:
                 subprocess.Popen([py, 'add_survey.py'], shell=True)
                 print("Fenêtre 'add_survey.py' ouverte avec succès.")
             except Exception as e:
                 print(f"Erreur lors de l'ouverture de la fenêtre 'add_survey.py': {e}")
-        def add_invest():
 
+        def add_invest():
             try:
                 subprocess.Popen([py, 'signup.py'], shell=True)
                 print("Fenêtre 'signup.py' ouverte avec succès.")
             except Exception as e:
                 print(f"Erreur lors de l'ouverture de la fenêtre 'signup.py': {e}")
 
+        def ouvrir_grafique():
+            try:
+                subprocess.Popen([py, 'grafic.py'], shell=True)
+                print("Fenêtre 'grafic.py' ouverte avec succès.")
+            except Exception as e:
+                print(f"Erreur lors de l'ouverture de la fenêtre 'grafic.py': {e}")
 
         def display():
             """
-                Cette methode permet d'afficher les éléments qui seront présents sur la page d'accueil
-
+            Cette methode permet d'afficher les éléments qui seront présents sur la page d'accueil
             """
             conn = sqlite3.connect('database.db')
             myCursor = conn.cursor()
@@ -56,11 +60,12 @@ class Home(Tk):
             if self.pc:
                 self.listTree.delete(*self.listTree.get_children())
                 for row in self.pc:
-                    self.listTree.insert("",'end',text=row[0] ,values = (row[1],row[2],row[3],row[4],row[5]))
+                    self.listTree.insert("", 'end', text=row[0], values=(row[1], row[2], row[3], row[4], row[5]))
             else:
                 messagebox.showinfo("Error", "Either ID is wrong or The book is not yet issued on this ID")
             conn.commit()
             conn.close()
+
         Label(self, text='').pack()
         Label(self, text='Bienvenue dans Sherlockête  ', fg='black', font=('Arial', 25, 'bold')).place(x=170, y=140)
         Label(self, text='').pack()
@@ -89,6 +94,7 @@ class Home(Tk):
         list5 = Menu(self)
         list5.add_command(label="Rapport")
         list5.add_command(label="Preuves")
+        list5.add_command(label="Graphique", command=ouvrir_grafique)
 
         self.menubar.add_cascade(label='Enquête', menu=list1)
         self.menubar.add_cascade(label='Enqueteur', menu=list2)
@@ -97,23 +103,22 @@ class Home(Tk):
         self.menubar.add_cascade(label='Aurtres', menu=list5)
         self.config(menu=self.menubar)
 
-        Button(self, text="Afficher toutes les enquête", command=display,font=('Arial', 13, 'bold')).place(x=265, y=250)
-        self.listTree = ttk.Treeview(self,height=10,columns=('Debut','Fin','Enqueteur','Status','Description'))
-        self.listTree.heading("#0",text='Matricule',anchor='center')
-        self.listTree.column("#0",width=120,minwidth=120,anchor='center')
+        Button(self, text="Afficher toutes les enquête", command=display, font=('Arial', 13, 'bold')).place(x=265, y=250)
+        self.listTree = ttk.Treeview(self, height=10, columns=('Debut', 'Fin', 'Enqueteur', 'Status', 'Description'))
+        self.listTree.heading("#0", text='Matricule', anchor='center')
+        self.listTree.column("#0", width=120, minwidth=120, anchor='center')
         self.listTree.heading('Debut', text='Date debut')
-        self.listTree.column("Debut",width=120,minwidth=120,anchor='center')
+        self.listTree.column("Debut", width=120, minwidth=120, anchor='center')
         self.listTree.heading("Fin", text='Date fin')
-        self.listTree.column("Fin", width=120,minwidth=120,anchor='center')
+        self.listTree.column("Fin", width=120, minwidth=120, anchor='center')
         self.listTree.heading("Enqueteur", text='Enqueteur')
-        self.listTree.column("Enqueteur", width=120,minwidth=120,anchor='center')
+        self.listTree.column("Enqueteur", width=120, minwidth=120, anchor='center')
         self.listTree.heading("Status", text='Status')
-        self.listTree.column("Status", width=120, minwidth=120,anchor='center')
+        self.listTree.column("Status", width=120, minwidth=120, anchor='center')
         self.listTree.heading("Description", text='Description')
-        self.listTree.column("Description", width=120 , minwidth=120,anchor='center')
-        self.listTree.place(x=40,y=320)
-        ttk.Style().configure("Treeview",font=('Times new Roman',15))
-
+        self.listTree.column("Description", width=120, minwidth=120, anchor='center')
+        self.listTree.place(x=40, y=320)
+        ttk.Style().configure("Treeview", font=('Times new Roman', 15))
 
 
 Home().mainloop()
