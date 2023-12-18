@@ -63,6 +63,13 @@ class Home(Tk):
             except Exception as e:
                 print(f"Erreur lors de l'ouverture de la fenêtre 'add_suspect.py': {e}")
 
+        def add_witness():
+            try:
+                subprocess.Popen([py, 'add_witness.py'], shell=True)
+                print("Fenêtre 'add_witness.py' ouverte avec succès.")
+            except Exception as e:
+                print(f"Erreur lors de l'ouverture de la fenêtre 'add_witness.py': {e}")
+
 
         def display():
             """
@@ -103,7 +110,7 @@ class Home(Tk):
         list3.add_command(label="Supprimer suspect")
 
         list4 = Menu(self)
-        list4.add_command(label="Ajouter témoin")
+        list4.add_command(label="Ajouter témoin", command=add_witness)
         list4.add_command(label="Supprimer témoin")
 
         list5 = Menu(self)
