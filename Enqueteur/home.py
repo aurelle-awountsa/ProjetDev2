@@ -70,6 +70,13 @@ class Home(Tk):
             except Exception as e:
                 print(f"Erreur lors de l'ouverture de la fenêtre 'add_witness.py': {e}")
 
+        def add_proof():
+            try:
+                subprocess.Popen([py, 'add_proof.py'], shell=True)
+                print("Fenêtre 'add_proof.py' ouverte avec succès.")
+            except Exception as e:
+                print(f"Erreur lors de l'ouverture de la fenêtre 'add_proof.py': {e}")
+
 
         def display():
             """
@@ -115,7 +122,7 @@ class Home(Tk):
 
         list5 = Menu(self)
         list5.add_command(label="Rapport")
-        list5.add_command(label="Preuves")
+        list5.add_command(label="Preuves", command=add_proof)
         list5.add_command(label="Graphique", command=add_grafique)
 
         self.menubar.add_cascade(label='Enquête', menu=list1)
