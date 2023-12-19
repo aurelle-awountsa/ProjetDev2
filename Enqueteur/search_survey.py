@@ -56,7 +56,7 @@ class Enquete(Tk):
                         for row in self.pc:
                             self.listTree.insert("",'end',text=row[0] ,values = (row[1],row[2],row[3],row[4],row[5]))
                     else:
-                        messagebox.showinfo("Error", "Either ID is wrong or The book is not yet issued on this ID")
+                        messagebox.showinfo("Error", "le matricule est incorrect")
                 #self.destroy()
                 finally:
                     self.conn.close()

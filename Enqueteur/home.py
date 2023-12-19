@@ -3,14 +3,12 @@ from tkinter import *
 from tkinter import messagebox
 import sqlite3
 import subprocess
-from sqlite3 import Error
 from tkinter import ttk
-import os
 
 py = sys.executable
 
 
-# creating window
+# creation de la fenêtre
 class Home(Tk):
     def __init__(self):
         super().__init__()
@@ -43,6 +41,21 @@ class Home(Tk):
             except Exception as e:
                 print(f"Erreur lors de l'ouverture de la fenêtre 'signup.py': {e}")
 
+        def updaye_survey():
+
+            try:
+                subprocess.Popen([py, 'update_survey.py'], shell=True)
+                print("Fenêtre 'update.py' ouverte avec succès.")
+            except Exception as e:
+                print(f"Erreur lors de l'ouverture de la fenêtre 'update.py': {e}")
+        def search_survey():
+
+            try:
+                subprocess.Popen([py, 'search_survey.py'], shell=True)
+                print("Fenêtre 'search.py' ouverte avec succès.")
+            except Exception as e:
+                print(f"Erreur lors de l'ouverture de la fenêtre 'search.py': {e}")
+
 
         def display():
             """
@@ -58,7 +71,7 @@ class Home(Tk):
                 for row in self.pc:
                     self.listTree.insert("",'end',text=row[0] ,values = (row[1],row[2],row[3],row[4],row[5]))
             else:
-                messagebox.showinfo("Error", "Either ID is wrong or The book is not yet issued on this ID")
+                messagebox.showinfo("Error", "Matricule introuvable")
             conn.commit()
             conn.close()
         Label(self, text='').pack()
@@ -67,10 +80,9 @@ class Home(Tk):
 
         list1 = Menu(self)
         list1.add_command(label="Ajouter enquête", command=add_survey)
-        list1.add_command(label="Supprimer enquête")
         list1.add_separator()
-        list1.add_command(label="Chercher enquête")
-        list1.add_command(label="Mettre à jour enquête")
+        list1.add_command(label="Chercher enquête", command=search_survey)
+        list1.add_command(label="Mettre à jour enquête", command=updaye_survey)
         list1.add_separator()
         list1.add_command(label="Clôturer enquête")
 
@@ -81,6 +93,7 @@ class Home(Tk):
         list3 = Menu(self)
         list3.add_command(label="Ajouter suspect")
         list3.add_command(label="Supprimer suspect")
+        list3.add_command(label="Intérroger suspect")
 
         list4 = Menu(self)
         list4.add_command(label="Ajouter témoin")
