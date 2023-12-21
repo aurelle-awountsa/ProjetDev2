@@ -2,7 +2,6 @@ import sys
 import unittest
 from unittest.mock import patch
 
-from Enqueteur.home import Home
 from home import Home  # Assurez-vous de remplacer "your_script_file_name" par le nom réel de votre fichier
 
 

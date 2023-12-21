@@ -27,13 +27,20 @@ class Home(Tk):
         self.menubar = Menu(self)
 
         def add_survey():
-
+            """ ouvrir la page pour ajouter  une enquête
+            PRE : le fichier add_survey.py doit exister
+            POST : La fenêtre add_survey est ouverte
+            """
             try:
                 subprocess.Popen([py, 'add_survey.py'], shell=True)
                 print("Fenêtre 'add_survey.py' ouverte avec succès.")
             except Exception as e:
                 print(f"Erreur lors de l'ouverture de la fenêtre 'add_survey.py': {e}")
         def add_invest():
+            """ ouvrir la page pour ajouter  un enqueteur
+            PRE : le fichier signup.py doit exister
+            POST : La fenêtre signup est ouverte
+            """
 
             try:
                 subprocess.Popen([py, 'signup.py'], shell=True)

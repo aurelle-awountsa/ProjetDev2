@@ -96,6 +96,7 @@ class Enquete(Tk):
             PRE : le matricule d'une enquête via le formulaire
             POST : supprime une enquête la base de données
             """
+            pass
 
         def update_survey():
             """Mettre à jour une enquête

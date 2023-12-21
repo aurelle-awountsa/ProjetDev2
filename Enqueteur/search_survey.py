@@ -36,7 +36,7 @@ class Enquete(Tk):
         def search_survey():
             """chercher une enquête
                 Une enquête est unique par son matricule
-            PRE : le matricule d'une enquête via le formulaire
+            PRE : le matricule d'une enquête via le formulaire de type string
             POST : retourner les informations liées à une enquête
             """
             matricule_value = matricule.get()
@@ -54,10 +54,11 @@ class Enquete(Tk):
                     if self.pc:
                         self.listTree.delete(*self.listTree.get_children())
                         for row in self.pc:
-                            self.listTree.insert("",'end',text=row[0] ,values = (row[1],row[2],row[3],row[4],row[5]))
+                            self.listTree.insert("", 'end', text=row[0],
+                                                 values=(row[1], row[2], row[3], row[4], row[5]))
                     else:
                         messagebox.showinfo("Error", "le matricule est incorrect")
-                #self.destroy()
+                # self.destroy()
                 finally:
                     self.conn.close()
 
@@ -68,23 +69,22 @@ class Enquete(Tk):
         Label(self, text='Matricule:', font=('Comic Scan Ms', 14, 'bold')).place(x=260, y=150)
         Entry(self, textvariable=matricule, width=30).place(x=400, y=155)
 
-
-        self.listTree = ttk.Treeview(self,height=10,columns=('Debut','Fin','Enqueteur','Status','Description'))
-        self.listTree.heading("#0",text='Matricule',anchor = 'center')
-        self.listTree.column("#0",width=120,minwidth=120,anchor='center')
+        self.listTree = ttk.Treeview(self, height=10, columns=('Debut', 'Fin', 'Enqueteur', 'Status', 'Description'))
+        self.listTree.heading("#0", text='Matricule', anchor='center')
+        self.listTree.column("#0", width=120, minwidth=120, anchor='center')
         self.listTree.heading('Debut', text='Date debut')
-        self.listTree.column("Debut",width=120,minwidth=120,anchor='center')
+        self.listTree.column("Debut", width=120, minwidth=120, anchor='center')
         self.listTree.heading("Fin", text='Date fin')
-        self.listTree.column("Fin", width=120,minwidth=120,anchor='center')
+        self.listTree.column("Fin", width=120, minwidth=120, anchor='center')
         self.listTree.heading("Enqueteur", text='Enqueteur')
-        self.listTree.column("Enqueteur", width=120,minwidth=120,anchor='center')
+        self.listTree.column("Enqueteur", width=120, minwidth=120, anchor='center')
         self.listTree.heading("Status", text='Status')
-        self.listTree.column("Status", width=120, minwidth=120,anchor='center')
+        self.listTree.column("Status", width=120, minwidth=120, anchor='center')
         self.listTree.heading("Description", text='Description')
-        self.listTree.column("Description", width=120 , minwidth=120,anchor='center')
+        self.listTree.column("Description", width=120, minwidth=120, anchor='center')
 
-        self.listTree.place(x=40,y=280)
-        ttk.Style().configure("Treeview",font=('Times new Roman',15))
+        self.listTree.place(x=40, y=280)
+        ttk.Style().configure("Treeview", font=('Times new Roman', 15))
         Button(self, text="Chercher", font=('Arial', 13, 'bold'), command=search_survey).place(x=350, y=210)
 
 
