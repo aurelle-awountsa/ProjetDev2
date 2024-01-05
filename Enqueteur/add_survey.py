@@ -90,29 +90,6 @@ class Enquete(Tk):
         Label(self, text='Description:', font=('Comic Scan Ms', 10, 'bold')).place(x=100, y=380)
         Entry(self, textvariable=description, width=30).place(x=230, y=382)
         Button(self, text="Submit", command=add_survey).place(x=270, y=480)
-        def del_survey():
-            """Suprimer une enquête à la base de données
-
-            PRE : le matricule d'une enquête via le formulaire
-            POST : supprime une enquête la base de données
-            """
-            pass
-
-        def update_survey():
-            """Mettre à jour une enquête
-                la mise à jour d'une enquête consiste à modifier certains attributs comme dans ce cas le status, l'enqueteur en charge et la description de l'enquête
-            PRE : le matricule d'une enquête via le formulaire
-            POST : attributs d'une enquête modifiées la base de données
-            """
-            pass
-        def search_survey():
-            """chercher une enquête
-                Une enquête est unique par son matricule
-            PRE : le matricule d'une enquête via le formulaire
-            POST : retourner les informations liées à une enquête
-            """
-            pass
-
 
 # Création d'une instance de la classe Add_Survey et exécution de la boucle principale Tkinter
 if __name__ == "__main__":
