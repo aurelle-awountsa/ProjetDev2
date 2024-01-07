@@ -1,7 +1,7 @@
 import sqlite3
 import unittest
 from unittest.mock import MagicMock
-from home_logic import LogicHome  # Remplacez 'your_module' par le nom réel de votre module
+from home_logic import LogicHome
 
 class TestLogicHome(unittest.TestCase):
     def setUp(self):
