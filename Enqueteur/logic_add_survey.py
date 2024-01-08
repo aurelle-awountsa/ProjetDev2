@@ -6,46 +6,46 @@ class LogicAddSurvey:
              PRE: matricule de l'enquête  , date de debut de l'enquête ,date de fin de l'enquête,  enqueteur en charge de l'enquête, status de l'enquête
              POST: un objet enquête
         """
-        self._matricule = matricule
-        self._debut = debut
-        self._fin = fin
-        self._enqueteur = enqueteur
-        self._status = status
-        self._description = description
+        self.__matricule = matricule
+        self.__debut = debut
+        self.__fin = fin
+        self.__enqueteur = enqueteur
+        self.__status = status
+        self.__description = description
 
 
     @property
     def matricule(self):
-        return self._matricule
+        return self.__matricule
 
     @property
     def debut(self):
-        return self._debut
+        return self.__debut
 
     @property
     def fin(self):
-        return self._fin
+        return self.__fin
 
     @property
     def enqeteur(self):
-        return self._enqueteur
+        return self.__enqueteur
 
     @property
     def status(self):
-        return self._status
+        return self.__status
     @property
     def description(self):
-        return self._description
+        return self.__description
 
 
     def add_survey(self):
 
-        matricule_value = self._matricule.get()
-        enqueteur_value = self._enqueteur.get()
-        debut_value = self._debut.get()
-        fin_value = self._fin.get()
-        status_value = self._status.get()
-        description_value = self._description.get()
+        matricule_value = self.__matricule.get()
+        enqueteur_value = self.__enqueteur.get()
+        debut_value = self.__debut.get()
+        fin_value = self.__fin.get()
+        status_value = self.__status.get()
+        description_value = self.__description.get()
         if len(matricule_value) == 0 or len(enqueteur_value) == 0 or len(status_value) == 0 or len(debut_value) == 0:
             return False, "Veuillez renseigner les champs obligatoires"
         try:
